@@ -1,0 +1,323 @@
+<html>
+<head>
+    <style>
+        body {
+            background-color: #ffcda4;
+            background-size: cover;
+        }
+
+        .submit {
+            
+            border: none;
+            color: black;
+            width: 100px;
+            height: 35px;
+            background: #ff6600;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .reset {
+            border: none;
+            color: black;
+            width: 100px;
+            height: 35px;
+            background: #ff6600;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+    </style>
+
+
+
+    <title>Registration Form validation</title>
+    <script>
+        function validation() {
+            var right_way = /^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/;
+            //username      
+            var username = document.getElementById("username").value;
+            if (username == "") {
+                alert("please enter username");
+                document.getElementById("username").focus();
+                return false;
+            }
+            if (username.length < 3) {
+                alert("user must be 3 charaters");
+                document.getElementById("username").focus();
+                return false;
+            }
+            if (username.length > 20) {
+                alert("user name must be under 20 charaters")
+                return false;
+            }
+            if (username.match(right_way))
+                true;
+            else {
+                alert("only alphabets are allowed");
+                return false;
+            }
+            // password               
+            var password = document.getElementById("password").value;
+            if (password == "") {
+                alert("please enter password");
+                document.getElementById("password").focus();
+                return false;
+            }
+            /* var conformpassword= document.getElementById("cpassword").focus();
+                    if (password != conformpassword)
+                    {
+                      alert ("password not matched please re enter same password");
+                      return false;
+                    }*/
+            //email                 
+            var email = document.getElementById("email").value;
+            if (email == "") {
+                alert("please enter email");
+                return false;
+            }
+            var email = document.myForm.email.value;
+            if (email.indexOf('@') <= 0) {
+                alert("invalid @ position");
+                return false;
+            }
+           
+            if ((email.charAt(email.length - 4) != '.') && (email.charAt(email.length - 3) != '.')) {
+                alert("invalid '.' position");
+                return false;
+
+            }
+            // date of birth               
+            var dob = document.getElementById("dob").value;
+            if (dob == "") {
+                alert("please enter date of birth");
+                return false;
+            }
+            //ph number
+            var ph = document.getElementById("ph").value;
+            if (ph == "") {
+                alert("enter ph number");
+                return false;
+            }
+            if (isNaN(ph)) {
+                alert("only numbers are allowd");
+                return false;
+            }
+            if (ph.length < 10) {
+                alert("mobles numbers must be 10 digits");
+                return false;
+            }
+            if (ph.length > 10) {
+                alert("mobles numbers must be 10 digits");
+                return false;
+            }
+            /*need to know*/              /*if ((ph.charAt(0)!=9) && (ph.charAt(0)!=8) (ph.charAt(0)!=7)){
+                               alert("number must be start with 7,8 and 9");
+                               return false;
+                           }*/
+            //radio
+            var gender = document.getElementsByName("gender");
+            if (!gender[0].checked && !gender[1].checked && !gender[2].checked) {
+                alert("please select gender");
+                return false;
+            }
+            //checkbox
+            var checkbox = document.getElementsByName("checkbox[]");
+            if (!checkbox[0].checked && !checkbox[1].checked && !checkbox[2].checked) {
+                alert("please select skills");
+                return false;
+            }
+            //qualification                          
+            var qualification = document.getElementById("qualification").value;
+            if (qualification == "") {
+                alert("select your qualification");
+                return false;
+
+            }
+            //drop down usertype
+            var usertype = document.getElementById("usertype").value;
+            if (usertype == "") {
+                alert("please select user type");
+                return false;
+            }
+            //drop down countries
+            var countries = document.getElementById("countries").value;
+            if (countries == "") {
+                alert("please select countries");
+                return false;
+            }
+            //drop down states                                
+            var states = document.getElementById("states").value;
+            if (states == "") {
+                alert("please select states");
+                return false;
+            }
+            //drop down city                                 
+            var city = document.getElementById("city").value;
+            if (city == "") {
+                alert("please select city");
+                return false;
+            }
+            //textarea address                   
+            var address = document.getElementById("address").value;
+            if (address == "") {
+                alert("please add address");
+                document.getElementById("address").focus();
+                return false;
+
+            }
+        }
+
+             // allow only text in username
+             function a(event){
+
+            var char = event.which;
+               if(char >31 && char != 32 && (char<65 || char>90) && (char <97 || char >122)){
+
+                alert("only alphabets allow");
+                return false;
+
+                }
+              }
+             //allow only numbers in text field        
+             function numb(event){
+                   var x = event.which || event.keycode;
+                   if((x >= 48 && x <= 57)) 
+                    return true;
+                    else{
+                        alert("only digits allow");
+
+                        return false;
+                 }
+               }   
+
+     
+     
+    </script>
+
+
+    <!--html starts--> 
+
+</head>
+<center>
+
+    <body>
+
+        <table style="background-color: #f09b57;">
+            <form action="" method="POST" enctype="multipart/form-data" name="myForm" autocomplete="off">
+
+                <caption style="background-color: #f09b57; color: #161414" ;>
+                    <h2>Registration Form</h2>
+                </caption>
+
+
+                <tr>
+                    <td> Username:</td>
+                    <td><input type="text" name="username" id="username"  placeholder="name" onkeypress="return a(event)"></td>
+                </tr>
+                <tr>
+                    <td> Password:</td>
+                    <td><input type="password" name="password" id="password" placeholder="password"></td>
+                </tr>
+
+                <tr>
+                    <td> Email:</td>
+                    <td><input type="text" name="email" id="email" placeholder="Email" value=""></td>
+                </tr>
+                <tr>
+                    <td> DOB:</td>
+                    <td> <input type="date" name="dob" id="dob" placeholder="date of birth"></td>
+                </tr>
+                <tr>
+                    <td> PH.NO:</td>
+                    <td> <input type="text" name="number" id="ph" placeholder="ph.number" onkeypress="return numb(event)"></td>
+                </tr>
+                <tr>
+                    <td>
+                        Gender:<br>
+                    </td>
+                    <td> <input type="radio" name="gender" value="male" id="male">Male<br>
+                        <input type="radio" name="gender" value="female" id="female">Female<br>
+                        <input type="radio" name="gender" value="others" id="others">other<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td> Skills:</td>
+                    <td> <input type="checkbox" name="checkbox[]" value="html" id="html">html
+                        <input type="checkbox" name="checkbox[]" value="css" id="css">css
+                        <input type="checkbox" name="checkbox[]" value="javascript" id="javascript">javascript
+                    </td>
+                </tr>
+                <tr>
+                    <td>Qualification:</td>
+                    <td><select name="qualification" id="qualification">
+                            <option value="">select</option>
+                            <option value="BSC">BSC</option>
+                            <option value="BSC.CHEMISTRY">BSC.CHEMISTRY</option>
+                            <option value="B.tech">B.tech</option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td> Usertype: </td>
+                    <td>
+                        <select id="usertype" name="usertype">
+                            <option value="">select</option>
+                            <option value="admin">Admin</option>
+                            <option value="agent">Agent</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td> Countries:</td>
+                    <td>
+                        <select id="countries" name="countries">
+                            <option value="">select</option>
+                            <option value="India">India</option>
+                            <option value="USA">USA</option>
+                            <option value="Japan">Japan</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td> States:</td>
+                    <td>
+                        <select id="states" name="states">
+                            <option value="">select</option>
+                            <option value="Andhara Pradesh">Andhara Pradesh</option>
+                            <option value=" Telangana">Telangana</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td> city:</td>
+                    <td>
+                        <select id="city" name="city">
+                            <option value="">select</option>
+                            <option value="Hyderbad">Hyderbad</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Kolkata">Kolkata</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>add file:</td>
+                    <td><input type="file" name="file[]" id="file" multiple></td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td><textarea name="address" id="address" name="address" cols="10" rows="1"></textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="register" id="submit" name="submit" onclick="return validation()"
+                            class="submit">
+                        <input type="reset" value="reset" id="reset" class="reset">
+                    </td>
+                </tr>
+            </form>
+        </table>
+    </body>
+</center>
+
+</html>
